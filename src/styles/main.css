@@ -346,11 +346,6 @@ footer {
     font-size: 14px;
 }
 
-footer a {
-    text-decoration: none;
-    color: #ff6600;
-}
-
 @keyframes bounce {
     0%, 100% {
         transform: translateY(-25%);
