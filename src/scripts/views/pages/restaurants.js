@@ -1,5 +1,5 @@
 import RestaurantsSource from '../../data/restaurants-source';
-import { createRestaurantItemTemplate } from '../templates/template-creator';
+import { createFetchFailedTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
 
 const Restaurants = {
   async render() {
@@ -33,11 +33,15 @@ const Restaurants = {
   },
 
   async afterRender() {
-    const restaurants = await RestaurantsSource.getAll();
     const restaurantsContainer = document.getElementById('restaurantsContainer');
-    restaurantsContainer.innerHTML = restaurants
-      .map((restaurant) => createRestaurantItemTemplate(restaurant))
-      .reduce((sum, restaurant) => sum + restaurant);
+    try {
+      const restaurants = await RestaurantsSource.getAll();
+      restaurantsContainer.innerHTML = restaurants
+        .map((restaurant) => createRestaurantItemTemplate(restaurant))
+        .reduce((sum, restaurant) => sum + restaurant);
+    } catch (_) {
+      restaurantsContainer.innerHTML = createFetchFailedTemplate();
+    }
   },
 };
 

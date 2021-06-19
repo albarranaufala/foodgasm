@@ -117,10 +117,17 @@ const createEmptyRestaurantListTemplate = () => (`
 	</p>
 `);
 
+const createFetchFailedTemplate = () => (`
+	<p class="empty-list">
+		Failed to get data. please check your connection and try again.
+	</p>
+`);
+
 export {
 	createRestaurantItemTemplate,
 	createRestaurantDetailTemplate,
 	createLikeButtonTemplate,
 	createLikedButtonTemplate,
 	createEmptyRestaurantListTemplate,
+	createFetchFailedTemplate,
 };
