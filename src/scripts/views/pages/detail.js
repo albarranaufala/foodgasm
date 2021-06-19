@@ -1,5 +1,6 @@
 import RestaurantsSource from '../../data/restaurants-source';
 import UrlParser from '../../routes/url-parser';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 import { createRestaurantDetailTemplate } from '../templates/template-creator';
 
 const Detail = {
@@ -15,6 +16,18 @@ const Detail = {
     const restaurant = await RestaurantsSource.getById(url.id);
     const restaurantDetail = document.getElementById('restaurantDetail');
     restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
+
+    LikeButtonInitiator.init({
+      likeButtonContainer: document.querySelector('#favoriteButton'),
+      restaurant: {
+        id: restaurant.id,
+        name: restaurant.name,
+        description: restaurant.description,
+        rating: restaurant.rating,
+        city: restaurant.city,
+        pictureId: restaurant.pictureId,
+      },
+    });
   },
 };
 
