@@ -1,4 +1,6 @@
-import CONFIG from "../../globals/config";
+/* eslint-disable indent */
+/* eslint-disable no-tabs */
+import CONFIG from '../../globals/config';
 
 const createRestaurantDetailTemplate = (restaurant) => (`
 	<div class="container">
@@ -9,7 +11,7 @@ const createRestaurantDetailTemplate = (restaurant) => (`
 				</div>
 				<div class="restaurant-detail-info">
 					<ul class="restaurant-detail-categories mb-2">
-						${restaurant.categories.map(category => `<li>${category.name}</li>`).reduce((html, category) => html + category)}
+						${restaurant.categories.map((category) => `<li>${category.name}</li>`).reduce((html, category) => html + category)}
 					</ul>
 					<h2>${restaurant.name}</h2>
 					<div class="additional-info mb-4">
@@ -45,19 +47,19 @@ const createRestaurantDetailTemplate = (restaurant) => (`
 			<p class="label">Foods</p>
 			<ul class="mb-4 menus">
 				${restaurant.menus.foods
-					.map(food => `<li>${food.name}</li>`)
+					.map((food) => `<li>${food.name}</li>`)
 					.reduce((html, food) => html + food)}
 			</ul>
 			<p class="label">Drinks</p>
 			<ul class="mb-4 menus">
 				${restaurant.menus.drinks
-					.map(drink => `<li>${drink.name}</li>`)
+					.map((drink) => `<li>${drink.name}</li>`)
 					.reduce((html, drink) => html + drink)}
 			</ul>
 			<p class="label">Reviews</p>
 			<ul class="reviews">
 				${restaurant.customerReviews
-					.map(review => `
+					.map((review) => `
 						<li>
 							<p class="name">${review.name}</p>
 							<p class="date">${review.date}</p>
@@ -68,7 +70,7 @@ const createRestaurantDetailTemplate = (restaurant) => (`
 			</ul>
 		</div>
 	</div>
-`)
+`);
 
 const createRestaurantItemTemplate = (restaurant) => (`
 	<a href="#/restaurants/${restaurant.id}" class="restaurant-item">

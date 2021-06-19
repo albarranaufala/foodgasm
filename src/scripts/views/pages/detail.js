@@ -1,6 +1,6 @@
-import RestaurantsSource from "../../data/restaurants-source";
+import RestaurantsSource from '../../data/restaurants-source';
 import UrlParser from '../../routes/url-parser';
-import { createRestaurantDetailTemplate } from "../templates/template-creator";
+import { createRestaurantDetailTemplate } from '../templates/template-creator';
 
 const Detail = {
   async render() {
@@ -9,7 +9,7 @@ const Detail = {
       </section>
     `;
   },
- 
+
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantsSource.getById(url.id);
@@ -17,5 +17,5 @@ const Detail = {
     restaurantDetail.innerHTML = createRestaurantDetailTemplate(restaurant);
   },
 };
- 
+
 export default Detail;

@@ -1,5 +1,5 @@
-import RestaurantsSource from "../../data/restaurants-source";
-import { createRestaurantItemTemplate } from "../templates/template-creator";
+import RestaurantsSource from '../../data/restaurants-source';
+import { createRestaurantItemTemplate } from '../templates/template-creator';
 
 const Restaurants = {
   async render() {
@@ -31,7 +31,7 @@ const Restaurants = {
       </section>
     `;
   },
- 
+
   async afterRender() {
     const restaurants = await RestaurantsSource.getAll();
     const restaurantsContainer = document.getElementById('restaurantsContainer');
@@ -40,5 +40,5 @@ const Restaurants = {
       .reduce((sum, restaurant) => sum + restaurant);
   },
 };
- 
+
 export default Restaurants;
