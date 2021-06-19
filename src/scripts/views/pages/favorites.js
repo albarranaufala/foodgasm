@@ -1,5 +1,5 @@
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
-import { createEmptyRestaurantListTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
+import { createEmptyRestaurantListTemplate } from '../templates/template-creator';
 
 const Favorites = {
   async render() {
@@ -9,7 +9,7 @@ const Favorites = {
           <h2>
             Favorite Restaurants
           </h2>
-          <div id="restaurantsContainer" class="restaurants-wrapper" />
+          <restaurant-list class="restaurants-wrapper" />
         </article>
       </section>
     `;
@@ -17,13 +17,11 @@ const Favorites = {
 
   async afterRender() {
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    const restaurantsContainer = document.querySelector('#restaurantsContainer');
+    const restaurantListElement = document.querySelector('restaurant-list');
     if (restaurants.length) {
-      restaurantsContainer.innerHTML = restaurants
-        .map((restaurant) => createRestaurantItemTemplate(restaurant))
-        .reduce((sum, restaurant) => sum + restaurant);
+      restaurantListElement.restaurants = restaurants;
     } else {
-      restaurantsContainer.innerHTML = createEmptyRestaurantListTemplate();
+      restaurantListElement.innerHTML = createEmptyRestaurantListTemplate();
     }
   },
 };

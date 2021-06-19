@@ -1,6 +1,9 @@
 import routes from '../routes/routes';
 import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/draw-initiator';
+import './components/app-bar';
+import './components/restaurant-list';
+import './components/restaurant-detail';
 
 class App {
   constructor({ button, drawer, content }) {
