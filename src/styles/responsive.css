@@ -39,4 +39,17 @@
     .restaurants-wrapper {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+
+    .restaurant-detail-head {
+        flex-direction: row;
+    }
+
+    .restaurant-detail-info {
+        width: 400px;
+        margin-left: 1rem;
+    }
+
+    .restaurant-detail-img {
+        flex: 1;
+    }
 }
