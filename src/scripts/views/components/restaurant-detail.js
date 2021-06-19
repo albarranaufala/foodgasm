@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable no-underscore-dangle */
+import RestaurantsSource from '../../data/restaurants-source';
 import CONFIG from '../../globals/config';
 import './button-favorite';
 
@@ -7,6 +8,14 @@ class RestaurantDetail extends HTMLElement {
   set restaurant(restaurant) {
     this._restaurant = restaurant;
     this.render();
+  }
+
+  set reviewerName(reviewerName) {
+    this._reviewerName = reviewerName;
+  }
+
+  set review(review) {
+    this._review = review;
   }
 
   render() {
@@ -56,7 +65,7 @@ class RestaurantDetail extends HTMLElement {
             ${this._restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).reduce((html, drink) => html + drink)}
           </ul>
           <p class="label">Reviews</p>
-          <ul class="reviews">
+          <ul class="reviews mb-4">
             ${this._restaurant.customerReviews
               .map((review) => `
                 <li>
@@ -67,11 +76,39 @@ class RestaurantDetail extends HTMLElement {
               `)
               .reduce((html, review) => html + review)}
           </ul>
+          <p class="label">Add Review</p>
+          <div>
+            <input id="nameInput" class="input mb-2" placeholder="Reviewer Name">
+            <input id="reviewInput" class="input mb-2" placeholder="Review">
+            <button id="submitReview" class="btn-review">Add Review</button>
+          </div>
         </div>
       </div>
     `;
+
     const buttonFavorite = document.querySelector('button-favorite');
     buttonFavorite.restaurant = this._restaurant;
+
+    const nameInput = document.querySelector('#nameInput');
+    const reviewInput = document.querySelector('#reviewInput');
+    const submitReview = document.querySelector('#submitReview');
+    nameInput.addEventListener('input', (event) => {
+      this.reviewerName = event.target.value;
+    });
+    reviewInput.addEventListener('input', (event) => {
+      this.review = event.target.value;
+    });
+    submitReview.addEventListener('click', async () => {
+      const reviews = await RestaurantsSource.postReview({
+        id: this._restaurant.id,
+        name: this._reviewerName,
+        review: this._review,
+      });
+      this.restaurant = {
+        ...this._restaurant,
+        customerReviews: reviews,
+      };
+    });
   }
 }
 
