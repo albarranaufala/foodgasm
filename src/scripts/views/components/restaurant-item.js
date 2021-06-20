@@ -11,7 +11,7 @@ class RestaurantItem extends HTMLElement {
     this.innerHTML = `
       <a href="#/restaurants/${this._restaurant.id}" class="restaurant-item">
         <div class="img-wrapper">
-          <img src="${CONFIG.BASE_SMALL_IMAGE_URL}/${this._restaurant.pictureId}" alt="Photo of ${this._restaurant.name}">
+          <img src="${CONFIG.BASE_SMALL_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}">
         </div>
         <div class="restaurant-info">
           <h3>${this._restaurant.name}</h3>
