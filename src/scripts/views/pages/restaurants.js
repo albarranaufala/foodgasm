@@ -1,5 +1,5 @@
 import RestaurantsSource from '../../data/restaurants-source';
-import { createFetchFailedTemplate } from '../templates/template-creator';
+import { createFetchFailedTemplate, createRestaurantListSkeletonTemplate } from '../templates/template-creator';
 
 const Restaurants = {
   async render() {
@@ -35,6 +35,7 @@ const Restaurants = {
   async afterRender() {
     const restaurantListElement = document.querySelector('restaurant-list');
     try {
+      restaurantListElement.innerHTML = createRestaurantListSkeletonTemplate();
       const restaurants = await RestaurantsSource.getAll();
       restaurantListElement.restaurants = restaurants;
     } catch (_) {
