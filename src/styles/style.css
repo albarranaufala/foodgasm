@@ -12,7 +12,6 @@ html,
 body {
     margin: 0;
     overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 .skip-link {
