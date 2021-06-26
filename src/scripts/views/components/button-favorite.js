@@ -28,14 +28,7 @@ class ButtonFavorite extends HTMLElement {
     `;
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant({
-        id: this._restaurant.id,
-        name: this._restaurant.name,
-        description: this._restaurant.description,
-        city: this._restaurant.city,
-        rating: this._restaurant.rating,
-        pictureId: this._restaurant.pictureId,
-      });
+      await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
       this.render();
     });
   }
@@ -57,4 +50,6 @@ class ButtonFavorite extends HTMLElement {
   }
 }
 
-customElements.define('button-favorite', ButtonFavorite);
+if (!customElements.get('button-favorite')) {
+  customElements.define('button-favorite', ButtonFavorite);
+}
