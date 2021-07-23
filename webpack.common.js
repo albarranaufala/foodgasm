@@ -3,6 +3,7 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   entry: resolve(__dirname, 'src/scripts/index.js'),
@@ -44,5 +45,6 @@ module.exports = {
     new ServiceWorkerWebpackPlugin({
       entry: resolve(__dirname, 'src/scripts/sw.js'),
     }),
+    new BundleAnalyzerPlugin(),
   ],
 };
