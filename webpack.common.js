@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
+const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
-const { resolve } = require('path');
 
 module.exports = {
   entry: resolve(__dirname, 'src/scripts/index.js'),
@@ -35,6 +35,9 @@ module.exports = {
         {
           from: resolve(__dirname, 'src/public/'),
           to: resolve(__dirname, 'dist/'),
+          globOptions: {
+            ignore: ['**/images/**'],
+          },
         },
       ],
     }),

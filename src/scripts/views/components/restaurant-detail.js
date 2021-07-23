@@ -24,7 +24,7 @@ class RestaurantDetail extends HTMLElement {
         <div class="restaurant-detail-card">
           <div class="restaurant-detail-head mb-4">
             <div class="restaurant-detail-img mb-4">
-              <img src="${CONFIG.BASE_LARGE_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}">
+              <img class="lazyload" data-src="${CONFIG.BASE_LARGE_IMAGE_URL}/${this._restaurant.pictureId}" alt="${this._restaurant.name}">
             </div>
             <div class="restaurant-detail-info">
               <ul class="restaurant-detail-categories mb-2">

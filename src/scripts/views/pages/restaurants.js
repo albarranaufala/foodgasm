@@ -16,6 +16,10 @@ const Restaurants = {
                       </a>
                   </div>
               </div>
+              <picture>
+                <source media="(max-width: 600px)" srcset="/images/heros/hero-image_2-small.jpg">
+                <img src="/images/heros/hero-image_2-large.jpg" alt="hero image">
+              </picture>
           </article>
           <div class="desktop-down down">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
