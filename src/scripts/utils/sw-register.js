@@ -1,8 +1,8 @@
-import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import { register } from 'serviceworker-webpack-plugin/lib/runtime';
 
 const swRegister = async () => {
   if ('serviceWorker' in navigator) {
-    await runtime.register();
+    await register();
     return;
   }
   // eslint-disable-next-line no-console
